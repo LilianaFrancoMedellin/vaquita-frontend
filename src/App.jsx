@@ -1,11 +1,17 @@
-import { Button } from "./components/Button/Button";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { FriendsPage } from "./pages/friends";
+import { ExpensesPage } from "./pages/expenses";
+import { GroupsPage } from "./pages/groups";
 
-function App() {
-  return (
-    <>
-      <Button>Hello World (this is the children)</Button>
-    </>
-  );
-}
+const routes = [
+  { path: "/", element: <FriendsPage /> },
+  { path: "/expenses", element: <ExpensesPage /> },
+  { path: "/groups", element: <GroupsPage /> },
+];
+const router = createBrowserRouter(routes);
 
-export default App;
+const App = () => {
+  return <RouterProvider router={router} />;
+};
+
+export { App };

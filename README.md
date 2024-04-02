@@ -11,3 +11,10 @@
 - Definir las fuentes de Google Fonts a descargar en el `index.html`.
 - Inicializar el frontend en el puerto `3000`.
 - Establecer en Tailwind que la fuente usada será Fredoka.
+
+## 3. Definición de rutas
+
+- Instalación de `react-router-dom` usando `npm`.
+- Definición de rutas en `App.jsx` componente raiz de la aplicación.
+- Creación de las 3 rutas o paginas en la carpeta pages.
+- Fix en la definición de las fuentes.
