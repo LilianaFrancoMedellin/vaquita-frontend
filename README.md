@@ -1,4 +1,4 @@
-# Vaki Frontend 🐮
+# Vaquita Frontend 🐮
 
 ## 1. Setup del proyecto
 
