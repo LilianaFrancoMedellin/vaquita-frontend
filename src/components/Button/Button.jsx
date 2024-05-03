@@ -1,10 +1,23 @@
-const Button = (props) => {
-  const { children } = props;
+import PropTypes from "prop-types";
+
+const Button = ({ text, action, size }) => {
   return (
-    <button className="bg-blue-500 rounded-lg px-4 py-2 text-3xl">
-      {children}
+    <button
+      onClick={action}
+      type="button"
+      className={`bg-vaki-primary text-white rounded cursor-pointer ${
+        size === "md" ? "px-3 py-2" : "px-2 py-1"
+      }`}
+    >
+      {text}
     </button>
   );
 };
 
-export { Button };
+Button.propTypes = {
+  action: PropTypes.func,
+  text: PropTypes.string,
+  size: PropTypes.string,
+};
+
+export default Button;
