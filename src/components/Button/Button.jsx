@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const Button = ({ text, action, size }) => {
   return (
@@ -6,7 +6,7 @@ const Button = ({ text, action, size }) => {
       onClick={action}
       type="button"
       className={`bg-vaki-primary text-white rounded cursor-pointer ${
-        size === "md" ? "px-3 py-2" : "px-2 py-1"
+        size === 'md' ? 'px-3 py-2' : 'px-2 py-1'
       }`}
     >
       {text}

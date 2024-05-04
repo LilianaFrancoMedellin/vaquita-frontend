@@ -4,18 +4,20 @@ import FriendsPage from './pages/FriendPage';
 import ExpensesPage from './pages/ExpensesPage';
 import HomePage from './pages/HomePage';
 import MyAccountPage from './pages/MyAccountPage';
+import NotFoundPage from './pages/NotFoundPage';
+import LoginPage from './pages/LoginPage';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 
 const App = () => {
   return (
-    <div className='flex flex-col h-screen justify-between'>
+    <div className="flex flex-col h-screen justify-between">
       <Navbar />
-      <main className='mt-4 mb-auto px-8 lg:px-40'>
+      <main className="mt-4 mb-auto px-8 lg:px-40">
         <Routes>
           <Route
-            path='/'
+            path="/"
             element={
               <ProtectedRoute>
                 <HomePage />
@@ -23,7 +25,7 @@ const App = () => {
             }
           />
           <Route
-            path='/groups'
+            path="/groups"
             element={
               <ProtectedRoute>
                 <GroupsPage />
@@ -31,7 +33,7 @@ const App = () => {
             }
           />
           <Route
-            path='/friends'
+            path="/friends"
             element={
               <ProtectedRoute>
                 <FriendsPage />
@@ -39,7 +41,7 @@ const App = () => {
             }
           />
           <Route
-            path='/expenses'
+            path="/expenses"
             element={
               <ProtectedRoute>
                 <ExpensesPage />
@@ -47,14 +49,15 @@ const App = () => {
             }
           />
           <Route
-            path='/my-account'
+            path="/my-account"
             element={
               <ProtectedRoute>
                 <MyAccountPage />
               </ProtectedRoute>
             }
           />
-          <Route path='*' element={<>Not found</>} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />
