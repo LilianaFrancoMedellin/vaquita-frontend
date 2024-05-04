@@ -9,7 +9,7 @@
 ## 2. Instalación de las fuentes
 
 - Definir las fuentes de Google Fonts a descargar en el `index.html`.
-- Inicializar el frontend en el puerto `3000`.
+- Inicializar el frontend en el puerto `3001`.
 - Establecer en Tailwind que la fuente usada será Fredoka.
 
 ## 3. Definición de rutas
