@@ -6,7 +6,7 @@ import HomePage from './pages/HomePage';
 import MyAccountPage from './pages/MyAccountPage';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-import ProtectedRoute from './ProtectedRoute';
+import ProtectedRoute from './components/Auth/ProtectedRoute';
 
 const App = () => {
   return (
