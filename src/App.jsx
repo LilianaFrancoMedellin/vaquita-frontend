@@ -9,12 +9,13 @@ import LoginPage from './pages/LoginPage';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
+import CreateAccountPage from './pages/CreateAccountPage';
 
 const App = () => {
   return (
     <div className="flex flex-col h-screen justify-between">
       <Navbar />
-      <main className="mt-4 mb-auto px-8 lg:px-40">
+      <main className="mt-4 mb-auto px-2 sm:px-8 lg:px-40">
         <Routes>
           <Route
             path="/"
@@ -56,6 +57,7 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+          <Route path="/create-account" element={<CreateAccountPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
