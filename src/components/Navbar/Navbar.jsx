@@ -25,7 +25,10 @@ const Navbar = () => {
         <NavbarLink text="Expenses" path="/expenses" />
         <NavbarLink text="Groups" path="/groups" />
       </div>
-      <NavbarLink text="My Account" path="/my-account" />
+      <div className="flex gap-5">
+        <NavbarLink text="Account" path="/my-account" />
+        <NavbarLink text="Logout" path="/logout" />
+      </div>
     </header>
   );
 };

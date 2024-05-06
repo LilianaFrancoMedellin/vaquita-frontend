@@ -5,7 +5,7 @@ import ExpensesPage from './pages/ExpensesPage';
 import HomePage from './pages/HomePage';
 import MyAccountPage from './pages/MyAccountPage';
 import NotFoundPage from './pages/NotFoundPage';
-import LoginPage from './pages/LoginPage';
+import LoginPage from './pages/LoginPage/LoginPage';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
