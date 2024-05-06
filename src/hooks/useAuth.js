@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+
+const KEY = 'token';
 
 const useAuth = () => {
-  const location = useLocation();
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   useEffect(() => {
     const checkAuth = () => {
-      const token = sessionStorage.getItem('token');
+      const token = sessionStorage.getItem(KEY);
       try {
         if (token) {
           setIsAuthenticated(true);
@@ -16,7 +16,7 @@ const useAuth = () => {
         }
       } catch (error) {
         setIsAuthenticated(false);
-        sessionStorage.removeItem('token');
+        sessionStorage.removeItem(KEY);
       }
     };
     checkAuth();
@@ -26,7 +26,7 @@ const useAuth = () => {
     return () => {
       window.removeEventListener('storage', checkAuth);
     };
-  }, [location.pathname]);
+  }, []);
 
   return { isAuthenticated };
 };

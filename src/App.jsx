@@ -16,7 +16,7 @@ const App = () => {
   return (
     <div className="flex flex-col h-screen justify-between">
       <Navbar />
-      <main className="mt-4 mb-auto px-2 sm:px-8 lg:px-40">
+      <main className="mt-4 h-full px-2 sm:px-8 lg:px-40">
         <Routes>
           <Route
             path="/"

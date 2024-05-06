@@ -13,7 +13,8 @@ const LoginPage = () => {
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const onLogin = () => {
+  const onLogin = (e) => {
+    e.preventDefault();
     const { error, value } = schema.validate(
       {
         email,
@@ -36,25 +37,25 @@ const LoginPage = () => {
     loginAction(value)
       .then((response) => {
         const token = response.data.token;
-        if (response.data.token) {
+        if (token) {
           sessionStorage.setItem('token', token);
-          navigate('/');
+          window.dispatchEvent(new Event('storage'));
+          navigate('/', { replace: true });
         } else {
           setMessage('An error ocurred');
         }
         setIsLoading(false);
       })
       .catch((error) => {
-        console.log(error);
-        setMessage(error.response.data.message);
         setIsLoading(false);
+        setMessage(error.response.data.message);
       });
   };
 
   return (
-    <div className="flex flex-col justify-center items-center bg-gray-50 h-screen">
+    <div className="flex flex-col justify-center items-center h-full">
       <img className="mb-6 w-40 sm:w-52" src={loginLogo} alt="Login Logo" />
-      <h1 className="text-2xl font-bold mb-4 text-center text-vaki-primary">Login in</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center text-vaki-primary">Login</h1>
       <div className="mt-4 text-center w-8/12 sm:w-80">
         <form>
           <div className="flex flex-col gap-8 justify-center mb-8">
@@ -74,7 +75,7 @@ const LoginPage = () => {
             />
           </div>
           <div className="flex flex-col gap-4 justify-center">
-            <Button disabled={isLoading} type="button" text="Login" action={onLogin} size="md" />
+            <Button disabled={isLoading} type="submit" text="Login" action={onLogin} size="md" />
             <Button
               disabled={isLoading}
               type="button"
