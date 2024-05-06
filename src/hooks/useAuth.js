@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const useAuth = () => {
+  const location = useLocation();
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   useEffect(() => {
@@ -24,7 +26,7 @@ const useAuth = () => {
     return () => {
       window.removeEventListener('storage', checkAuth);
     };
-  }, []);
+  }, [location.pathname]);
 
   return { isAuthenticated };
 };
