@@ -10,6 +10,7 @@ import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import CreateAccountPage from './pages/CreateAccountPage';
+import LogoutPage from './pages/LogoutPage';
 
 const App = () => {
   return (
@@ -59,6 +60,7 @@ const App = () => {
           />
           <Route path="/create-account" element={<CreateAccountPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/logout" element={<LogoutPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
