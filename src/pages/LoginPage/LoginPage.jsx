@@ -57,7 +57,7 @@ const LoginPage = () => {
       <img className="mb-6 w-40 sm:w-52" src={loginLogo} alt="Login Logo" />
       <h1 className="text-2xl font-bold mb-4 text-center text-vaki-primary">Login</h1>
       <div className="mt-4 text-center w-8/12 sm:w-80">
-        <form>
+        <form onSubmit={onLogin}>
           <div className="flex flex-col gap-8 justify-center mb-8">
             <input
               className="w-full border border-vaki-black rounded p-1"
@@ -74,17 +74,22 @@ const LoginPage = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div className="flex flex-col gap-4 justify-center">
-            <Button disabled={isLoading} type="submit" text="Login" action={onLogin} size="md" />
-            <Button
-              disabled={isLoading}
-              type="button"
-              text="Register"
-              action={() => navigate('/create-account')}
-              size="md"
-            />
-          </div>
+          <Button
+            className="mt-4 w-full"
+            disabled={isLoading}
+            type="submit"
+            text="Login"
+            size="md"
+          />
         </form>
+        <Button
+          disabled={isLoading}
+          className="mt-4 w-full"
+          type="button"
+          text="Register"
+          action={() => navigate('/create-account')}
+          size="md"
+        />
         {message && <p className="text-vaki-red mt-6">{message}</p>}
       </div>
     </div>
