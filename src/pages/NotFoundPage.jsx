@@ -6,7 +6,7 @@ const NotFoundPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col justify-center items-center bg-gray-50 h-screen">
+    <div className="flex flex-col justify-center items-center h-full">
       <img className="mb-6 w-20" src={logo} alt="Vaki Logo" />
       <h1 className="text-4xl font-bold mb-4 text-center">404 - Not Found</h1>
       <p className="text-center">Sorry, It looks like the page you're looking for doesn't exist.</p>

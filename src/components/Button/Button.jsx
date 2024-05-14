@@ -6,9 +6,11 @@ const Button = ({ className, disabled, text, action, size, type }) => {
       disabled={!!disabled}
       onClick={action}
       type={type}
-      className={`bg-vaki-primary text-white rounded cursor-pointer ${className ?? ''} ${
-        size === 'md' ? 'px-3 py-2' : 'px-2 py-1'
-      } ${disabled ? 'cursor-not-allowed opacity-70' : ''}`}
+      className={`bg-vaki-primary text-white hover:opacity-90 rounded cursor-pointer ${
+        className ?? ''
+      } ${size === 'md' ? 'px-3 py-2' : 'px-2 py-1'} ${
+        disabled ? 'cursor-not-allowed opacity-70' : ''
+      }`}
     >
       {text}
     </button>

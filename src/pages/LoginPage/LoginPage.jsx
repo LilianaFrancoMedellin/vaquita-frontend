@@ -60,6 +60,7 @@ const LoginPage = () => {
         <form onSubmit={onLogin}>
           <div className="flex flex-col gap-8 justify-center mb-8">
             <input
+              aria-label="Email"
               className="w-full border border-vaki-black rounded p-1"
               type="email"
               placeholder="Email"
@@ -67,6 +68,7 @@ const LoginPage = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
+              aria-label="Password"
               className="w-full border border-vaki-black rounded p-1"
               type="password"
               placeholder="Password"
