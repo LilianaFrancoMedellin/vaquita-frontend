@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 
+const KEY = 'token';
+
 const useAuth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   useEffect(() => {
     const checkAuth = () => {
-      const token = sessionStorage.getItem('token');
+      const token = sessionStorage.getItem(KEY);
       try {
         if (token) {
           setIsAuthenticated(true);
@@ -14,7 +16,7 @@ const useAuth = () => {
         }
       } catch (error) {
         setIsAuthenticated(false);
-        sessionStorage.removeItem('token');
+        sessionStorage.removeItem(KEY);
       }
     };
     checkAuth();
