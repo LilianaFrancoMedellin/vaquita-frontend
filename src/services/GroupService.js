@@ -11,4 +11,13 @@ const getAll = () => {
   });
 };
 
-export { getAll };
+const getById = (id) => {
+  return axios.get(`${BASE_URL}/${id}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+    },
+  });
+};
+
+export { getAll, getById };
