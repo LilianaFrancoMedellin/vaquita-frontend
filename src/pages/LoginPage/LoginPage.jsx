@@ -55,7 +55,7 @@ const LoginPage = () => {
     <div className="flex flex-col justify-center items-center pt-20">
       <img className="mb-6 w-40 sm:w-52" src={loginLogo} alt="Login Logo" />
       <h1 className="text-2xl font-bold mb-4 text-center text-vaki-primary">Login</h1>
-      <div className="mt-4 text-center w-11/12 min-[320px]:w-8/12 sm:w-80">
+      <div className="mt-4 text-center w-11/12 xs:w-8/12 sm:w-80">
         <form onSubmit={onLogin}>
           <div className="flex flex-col gap-8 justify-center mb-8">
             <input

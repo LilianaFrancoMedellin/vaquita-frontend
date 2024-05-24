@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const Button = ({ className, disabled, text, action, size, type }) => {
+const Button = ({ className, disabled, text, action, size = 'md', type }) => {
   return (
     <button
       disabled={!!disabled}

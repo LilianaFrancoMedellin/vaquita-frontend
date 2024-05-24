@@ -24,7 +24,7 @@ const Card = ({ color, className, name, id }) => {
           <span>You owe: </span> <span className="text-vaki-green">$12000</span>
         </span>
         <div className="flex gap-4">
-          <Button text="Edit" action={() => navigate(`/groups/${id}`)} size="sm" />
+          <Button text="View" action={() => navigate(`/groups/${id}`)} size="sm" />
           <Button text="Delete" action={() => console.log('click on delete')} size="sm" />
         </div>
       </div>
