@@ -7,11 +7,11 @@ import HomePage from './pages/HomePage';
 import MyAccountPage from './pages/MyAccountPage';
 import NotFoundPage from './pages/NotFoundPage';
 import LoginPage from './pages/LoginPage/LoginPage';
+import CreateAccountPage from './pages/CreateAccountPage/CreateAccountPage';
+import LogoutPage from './pages/LogoutPage';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
-import CreateAccountPage from './pages/CreateAccountPage';
-import LogoutPage from './pages/LogoutPage';
 
 const App = () => {
   return (

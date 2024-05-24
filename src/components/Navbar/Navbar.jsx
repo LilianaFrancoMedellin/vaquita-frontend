@@ -108,11 +108,7 @@ const DropdownMenu = () => {
 
   return (
     <div ref={containerRef} className="flex gap-5 relative">
-      <button
-        type="button"
-        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-        id="dropdownDefaultButton"
-      >
+      <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} id="dropdownDefaultButton">
         <svg
           data-dropdown-toggle="dropdown"
           className="h-8 w-8 text-white"

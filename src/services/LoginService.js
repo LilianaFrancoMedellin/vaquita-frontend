@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const loginAction = (body) => {
+const login = (body) => {
   return axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/auth/login`, body, {
     headers: {
       'Content-Type': 'application/json',
@@ -8,4 +8,4 @@ const loginAction = (body) => {
   });
 };
 
-export { loginAction };
+export { login };
