@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import GroupsPage from './pages/GroupsPage';
+import GroupsDetailPage from './pages/GroupsDetailPage';
 import FriendsPage from './pages/FriendsPage';
 import ExpensesPage from './pages/ExpensesPage';
 import HomePage from './pages/HomePage';
@@ -31,6 +32,14 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <GroupsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/groups/:id"
+            element={
+              <ProtectedRoute>
+                <GroupsDetailPage />
               </ProtectedRoute>
             }
           />

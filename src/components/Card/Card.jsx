@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
 import logo from '../../assets/logo.svg';
 import Button from '../Button/Button';
+import { useNavigate } from 'react-router-dom';
 
-function Card({ color, className, name }) {
+const Card = ({ color, className, name, id }) => {
+  const navigate = useNavigate();
+
   return (
     <div
       className={`${
@@ -21,13 +24,13 @@ function Card({ color, className, name }) {
           <span>You owe: </span> <span className="text-vaki-green">$12000</span>
         </span>
         <div className="flex gap-4">
-          <Button text="Edit" action={() => console.log('click on edit')} size="sm" />
+          <Button text="Edit" action={() => navigate(`/groups/${id}`)} size="sm" />
           <Button text="Delete" action={() => console.log('click on delete')} size="sm" />
         </div>
       </div>
     </div>
   );
-}
+};
 
 Card.propTypes = {
   color: PropTypes.string,
