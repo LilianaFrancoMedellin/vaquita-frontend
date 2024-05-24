@@ -64,7 +64,6 @@ const GroupsDetailPage = () => {
             <span>You owe: </span> <span className="text-vaki-green">$12000</span>
           </span>
           <div className="flex gap-4">
-            <Button text="View" action={() => navigate(`/groups/${group.id}`)} size="sm" />
             <Button text="Delete" action={() => console.log('click on delete')} size="sm" />
           </div>
         </Card>
@@ -72,7 +71,7 @@ const GroupsDetailPage = () => {
       <div className="mx-2">
         <h2 className="text-vaki-secondary border-b-2">EXPENSES</h2>
       </div>
-      <div className="flex gap-2 flex-wrap md:flex-none">
+      <div className="flex gap-2 flex-wrap md:flex-none justify-center">
         {expenses.map((expense, index) => (
           <Card
             hideLogo

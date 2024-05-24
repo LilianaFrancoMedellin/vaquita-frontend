@@ -23,7 +23,7 @@ const Navbar = () => {
           </div>
         </Link>
       </div>
-      <div className="flex mt-3 sm:mt-0 order-last sm:order-none justify-between sm:justify-normal w-full sm:w-fit gap-8">
+      <div className="flex flex-wrap mt-3 sm:mt-0 order-last sm:order-none justify-between sm:justify-normal w-full sm:w-fit gap-2 xs:gap-8">
         <NavbarLink pathname={pathname} text="Friends" path="/friends" />
         <NavbarLink pathname={pathname} text="Expenses" path="/expenses" />
         <NavbarLink pathname={pathname} text="Groups" path="/groups" />
@@ -55,7 +55,7 @@ const NavbarLink = ({ pathname, path, text }) => {
   return (
     <Link className="lg:hover:underline relative flex justify-center" to={path}>
       {text}
-      <TriangleUp visible={pathname === path} />
+      <TriangleUp visible={pathname.includes(path)} />
     </Link>
   );
 };
