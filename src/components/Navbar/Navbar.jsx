@@ -1,11 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import logo from '../../assets/logo.svg';
 import { useAuth } from '../../hooks/useAuth';
 
 const Navbar = () => {
   const { isAuthenticated } = useAuth();
+  const location = useLocation();
+  const { pathname } = location;
 
   if (!isAuthenticated) {
     return null;
@@ -22,19 +24,38 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="flex mt-3 sm:mt-0 order-last sm:order-none justify-between sm:justify-normal w-full sm:w-fit gap-8">
-        <NavbarLink text="Friends" path="/friends" />
-        <NavbarLink text="Expenses" path="/expenses" />
-        <NavbarLink text="Groups" path="/groups" />
+        <NavbarLink pathname={pathname} text="Friends" path="/friends" />
+        <NavbarLink pathname={pathname} text="Expenses" path="/expenses" />
+        <NavbarLink pathname={pathname} text="Groups" path="/groups" />
       </div>
       <DropdownMenu />
     </header>
   );
 };
 
-const NavbarLink = ({ path, text }) => {
+const TriangleUp = ({ visible }) => {
+  return (
+    <div
+      className={`${
+        visible ? 'opacity-100' : 'opacity-0'
+      } transition-opacity duration-500 w-0 h-0 absolute bottom-[-16px] sm:bottom-[-19px]
+    border-l-[8px] border-l-transparent
+    border-b-[8px] border-b-white
+    border-r-[8px] border-r-transparent`}
+    ></div>
+  );
+};
+
+TriangleUp.propTypes = {
+  hideOnMobile: PropTypes.bool,
+  visible: PropTypes.bool,
+};
+
+const NavbarLink = ({ pathname, path, text }) => {
   return (
     <Link className="lg:hover:underline relative flex justify-center" to={path}>
       {text}
+      <TriangleUp visible={pathname === path} />
     </Link>
   );
 };
