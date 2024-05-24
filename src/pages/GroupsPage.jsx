@@ -6,13 +6,20 @@ import { useNavigate } from 'react-router-dom';
 
 const GroupsPage = () => {
   const [groups, setGroups] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     groupsService
       .getAll()
-      .then((res) => setGroups(res.data.groups))
-      .catch((error) => console.log(error));
+      .then((res) => {
+        setGroups(res.data.groups);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsLoading(false);
+      });
   }, []);
 
   return (
@@ -21,6 +28,11 @@ const GroupsPage = () => {
         <Button text="New Group" action={() => console.log('click on new group')} />
       </div>
       <div className="flex gap-2 flex-wrap md:flex-none justify-center">
+        {!groups.length && !isLoading && (
+          <h2 className="text-center text-vaki-secondary text-2xl mt-8">
+            Looks like there are not groups associated with you
+          </h2>
+        )}
         {groups.map((group, index) => (
           <Card
             key={index}
