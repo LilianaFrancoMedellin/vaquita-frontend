@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import logo from '../../assets/logo.svg';
+import userFilledLogo from '../../assets/user-filled.svg';
+
 import { useAuth } from '../../hooks/useAuth';
 
 const Navbar = () => {
@@ -16,7 +18,10 @@ const Navbar = () => {
   return (
     <header className="flex justify-between items-center flex-wrap sm:flex-nowrap bg-vaki-primary text-white p-4 lg:px-40 text-2xl">
       <div>
-        <Link className="lg:hover:underline" to="/">
+        <Link
+          className="lg:outline-none lg:hover:underline lg:focus:underline lg:active:underline"
+          to="/"
+        >
           <div className="flex items-center gap-2">
             <img src={logo} alt="Vaki Logo" />
             <span>Vaki</span>
@@ -53,7 +58,10 @@ TriangleUp.propTypes = {
 
 const NavbarLink = ({ pathname, path, text }) => {
   return (
-    <Link className="lg:hover:underline relative flex justify-center" to={path}>
+    <Link
+      className="lg:outline-none lg:hover:underline lg:focus:underline lg:active:underline relative flex justify-center"
+      to={path}
+    >
       {text}
       <TriangleUp visible={pathname.includes(path)} />
     </Link>
@@ -108,23 +116,13 @@ const DropdownMenu = () => {
 
   return (
     <div ref={containerRef} className="flex gap-5 relative">
-      <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} id="dropdownDefaultButton">
-        <svg
-          data-dropdown-toggle="dropdown"
-          className="h-8 w-8 text-white"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
+      <button
+        className="rounded-full p-[0.3rem] px-[0.4rem] bg-white"
+        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+        id="dropdownDefaultButton"
+      >
+        <img src={userFilledLogo} alt="Menu logo" />
       </button>
-
       <div
         id="dropdown"
         className={`z-10 ${
