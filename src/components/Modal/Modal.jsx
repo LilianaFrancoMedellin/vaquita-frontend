@@ -1,29 +1,12 @@
-import { useEffect, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button/Button';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 
 const Modal = ({ isOpen, setIsOpen, children, title }) => {
-  const escFunction = useCallback(
-    (event) => {
-      if (event.key === 'Escape') {
-        setIsOpen(false);
-      }
-    },
-    [isOpen]
-  );
-
-  // closes the modal when pressing escape key
-  useEffect(() => {
-    if (!isOpen) {
-      document.removeEventListener('keydown', escFunction, false);
-      return;
-    }
-    document.addEventListener('keydown', escFunction, false);
-
-    return () => {
-      document.removeEventListener('keydown', escFunction, false);
-    };
-  }, [escFunction, isOpen]);
+  useEscapeKey({
+    isOpen,
+    setIsOpen,
+  });
 
   if (!isOpen) {
     return null;

@@ -5,6 +5,7 @@ import logo from '../../assets/logo.svg';
 import userFilledLogo from '../../assets/user-filled.svg';
 
 import { useAuth } from '../../hooks/useAuth';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 
 const Navbar = () => {
   const { isAuthenticated } = useAuth();
@@ -77,14 +78,10 @@ const DropdownMenu = () => {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   const containerRef = React.useRef();
 
-  const escFunction = React.useCallback(
-    (event) => {
-      if (event.key === 'Escape') {
-        setIsDropdownOpen(false);
-      }
-    },
-    [isDropdownOpen]
-  );
+  useEscapeKey({
+    isOpen: isDropdownOpen,
+    setIsOpen: setIsDropdownOpen,
+  });
 
   // closes the dropdown when clicking outside the element (body)
   React.useEffect(() => {
@@ -100,19 +97,6 @@ const DropdownMenu = () => {
       document.body.removeEventListener('click', closeDropdown);
     };
   }, []);
-
-  // closes the dropdown when pressing escape key
-  React.useEffect(() => {
-    if (!isDropdownOpen) {
-      document.removeEventListener('keydown', escFunction, false);
-      return;
-    }
-    document.addEventListener('keydown', escFunction, false);
-
-    return () => {
-      document.removeEventListener('keydown', escFunction, false);
-    };
-  }, [escFunction, isDropdownOpen]);
 
   return (
     <div ref={containerRef} className="flex gap-5 relative">
