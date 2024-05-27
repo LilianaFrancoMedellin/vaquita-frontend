@@ -1,10 +1,12 @@
 import userIcon from '../../assets/user.svg';
 import passwordIcon from '../../assets/password.svg';
+import peopleIcon from '../../assets/people.svg';
 import PropTypes from 'prop-types';
 
 const availableIcons = {
   user: userIcon,
   password: passwordIcon,
+  people: peopleIcon,
 };
 
 const TextInput = ({ icon, ariaLabel, type, placeholder, name, onChange, value }) => {
@@ -14,7 +16,7 @@ const TextInput = ({ icon, ariaLabel, type, placeholder, name, onChange, value }
     <div className="relative">
       <input
         aria-label={ariaLabel}
-        className={`w-full border border-vaki-black rounded p-1 ${showIcon ? 'pr-8' : ''}`}
+        className={`w-full border border-vaki-black rounded p-1 pl-2 ${showIcon ? 'pr-8' : ''}`}
         type={type || 'text'}
         placeholder={placeholder}
         name={name}
