@@ -18,7 +18,7 @@ const Modal = ({ isOpen, setIsOpen, children, title }) => {
       <div className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div className="relative p-4 w-full max-w-2xl max-h-full">
           <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+            <div className="flex items-center justify-between p-4 md:px-6 border-b rounded-t dark:border-gray-600">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{title}</h3>
               <button
                 type="button"
@@ -43,8 +43,8 @@ const Modal = ({ isOpen, setIsOpen, children, title }) => {
                 <span className="sr-only">Close modal</span>
               </button>
             </div>
-            <div className="p-4 md:p-5 space-y-4">{children}</div>
-            <div className="flex items-center justify-end p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+            <div className="p-4 md:p-6 space-y-4">{children}</div>
+            <div className="flex items-center justify-end p-4 md:px-6 border-t border-gray-200 rounded-b dark:border-gray-600">
               <Button text="Close" action={() => setIsOpen(false)} variant="transparent" />
             </div>
           </div>
