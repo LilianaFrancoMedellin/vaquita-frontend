@@ -29,4 +29,13 @@ const create = (body) => {
   });
 };
 
-export { getAll, getById, create };
+const edit = (body) => {
+  return axios.put(`${BASE_URL}/${body.id}`, body, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+    },
+  });
+};
+
+export { getAll, getById, create, edit };
