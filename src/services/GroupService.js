@@ -20,4 +20,13 @@ const getById = (id) => {
   });
 };
 
-export { getAll, getById };
+const create = (body) => {
+  return axios.post(BASE_URL, body, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+    },
+  });
+};
+
+export { getAll, getById, create };

@@ -58,7 +58,7 @@ const CreateAccountPage = () => {
               ariaLabel="Name"
               type="text"
               placeholder="Name"
-              name="Name"
+              name="name"
               icon="user"
               onChange={(value) => setName(value)}
             />

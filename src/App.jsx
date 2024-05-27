@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import GroupsPage from './pages/GroupsPage';
+import GroupsPage from './pages/GroupsPage/GroupsPage';
 import GroupsDetailPage from './pages/GroupsDetailPage';
 import FriendsPage from './pages/FriendsPage';
 import ExpensesPage from './pages/ExpensesPage';
