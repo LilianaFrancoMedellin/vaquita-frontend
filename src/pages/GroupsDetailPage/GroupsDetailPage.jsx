@@ -3,6 +3,7 @@ import Button from '../../components/Button/Button';
 import Card from '../../components/Card/Card';
 import * as groupsService from '../../services/GroupService';
 import EditModal from './components/EditModal/EditModal';
+import AddFriendModal from './components/AddFriendModal/AddFriendModal';
 import { useParams } from 'react-router-dom';
 
 const expenses = [
@@ -35,6 +36,7 @@ const expenses = [
 const GroupsDetailPage = () => {
   const [group, setGroup] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpenAddFriend, setIsModalOpenAddFriend] = useState(false);
   const params = useParams();
 
   const fetchGroup = () => {
@@ -61,7 +63,7 @@ const GroupsDetailPage = () => {
       <div className="flex flex-col gap-8">
         <div className="flex flex-col xs:flex-row xs:justify-end my-4 gap-2 sm:gap-4">
           <Button text="New Expense" action={() => console.log('click on new expense')} />
-          <Button text="New Friend" action={() => console.log('click on new friend')} />
+          <Button text="New Friend" action={() => setIsModalOpenAddFriend(true)} />
           <Button text="Edit Group" action={() => setIsModalOpen(true)} />
         </div>
         <div>
@@ -107,6 +109,14 @@ const GroupsDetailPage = () => {
           onSuccess={fetchGroup}
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
+        />
+      )}
+      {isModalOpenAddFriend && (
+        <AddFriendModal
+          group={group}
+          onSuccess={fetchGroup}
+          isModalOpen={isModalOpenAddFriend}
+          setIsModalOpen={setIsModalOpenAddFriend}
         />
       )}
     </>
