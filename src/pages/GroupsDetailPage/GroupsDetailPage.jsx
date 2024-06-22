@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import Card from '../../components/Card/Card';
 import * as groupsService from '../../services/GroupService';
 import EditModal from './components/EditModal/EditModal';
 import AddFriendModal from './components/AddFriendModal/AddFriendModal';
-import { useParams } from 'react-router-dom';
+import DeleteModal from '../../components/DeleteGroupModal/DeleteModal';
 
 const expenses = [
   {
@@ -37,6 +38,8 @@ const GroupsDetailPage = () => {
   const [group, setGroup] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenAddFriend, setIsModalOpenAddFriend] = useState(false);
+  const [isModalOpenDelete, setIsModalOpenDelete] = useState(false);
+  const navigate = useNavigate();
   const params = useParams();
 
   const fetchGroup = () => {
@@ -72,8 +75,12 @@ const GroupsDetailPage = () => {
             <span className="text-base">
               <span>You owe: </span> <span className="text-vaki-green">$12000</span>
             </span>
+            <span className="text-base">
+              <span>Participants: </span>{' '}
+              <span className="text-vaki-red">{group.participants}</span>
+            </span>
             <div className="flex gap-4">
-              <Button text="Delete" action={() => console.log('click on delete')} size="sm" />
+              <Button text="Delete" action={() => setIsModalOpenDelete(true)} size="sm" />
             </div>
           </Card>
         </div>
@@ -117,6 +124,14 @@ const GroupsDetailPage = () => {
           onSuccess={fetchGroup}
           isModalOpen={isModalOpenAddFriend}
           setIsModalOpen={setIsModalOpenAddFriend}
+        />
+      )}
+      {isModalOpenDelete && (
+        <DeleteModal
+          group={group}
+          onSuccess={() => navigate('/groups')}
+          isOpen={isModalOpenDelete}
+          setIsOpen={setIsModalOpenDelete}
         />
       )}
     </>

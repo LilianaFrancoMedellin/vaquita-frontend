@@ -4,12 +4,15 @@ import Card from '../../components/Card/Card';
 import * as groupsService from '../../services/GroupService';
 import { useNavigate } from 'react-router-dom';
 import CreateModal from './components/CreateModal/CreateModal';
+import DeleteModal from '../../components/DeleteGroupModal/DeleteModal';
 
 const GroupsPage = () => {
+  const navigate = useNavigate();
   const [groups, setGroups] = useState([]);
+  const [selectedGroup, setSelectedGroup] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const navigate = useNavigate();
+  const [isModalOpenDelete, setIsModalOpenDelete] = useState(false);
 
   const fetchGroups = () => {
     groupsService
@@ -52,7 +55,14 @@ const GroupsPage = () => {
               </span>
               <div className="flex gap-4">
                 <Button text="View" action={() => navigate(`/groups/${group.id}`)} size="sm" />
-                <Button text="Delete" action={() => console.log('click on delete')} size="sm" />
+                <Button
+                  text="Delete"
+                  action={() => {
+                    setIsModalOpenDelete(true);
+                    setSelectedGroup(group);
+                  }}
+                  size="sm"
+                />
               </div>
             </Card>
           ))}
@@ -63,6 +73,14 @@ const GroupsPage = () => {
           onSuccess={fetchGroups}
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
+        />
+      )}
+      {isModalOpenDelete && (
+        <DeleteModal
+          group={selectedGroup}
+          onSuccess={fetchGroups}
+          isOpen={isModalOpenDelete}
+          setIsOpen={setIsModalOpenDelete}
         />
       )}
     </>
