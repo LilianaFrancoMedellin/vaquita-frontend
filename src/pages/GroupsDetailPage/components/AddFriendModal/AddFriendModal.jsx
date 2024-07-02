@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import * as userService from '../../../../services/UserService';
 import * as userGroupService from '../../../../services/UserGroupService';
 import Modal from '../../../../components/Modal/Modal';
 import Button from '../../../../components/Button/Button';
@@ -13,16 +12,9 @@ const AddFriendModal = ({ group, isModalOpen, setIsModalOpen, onSuccess }) => {
   const [selectedUsersId, setSelectedUsersId] = useState([]);
 
   useEffect(() => {
-    Promise.all([userService.getAll(), userGroupService.getAllByGroupId(group.id)])
-      .then((values) => {
-        const [resUsers, resUserGroups] = values;
-
-        const filteredUsers = resUsers.data.users.filter((user) => {
-          return !resUserGroups.data.userGroups.some((userGroup) => userGroup.userid === user.id);
-        });
-
-        setUsers(filteredUsers);
-      })
+    userGroupService
+      .getAvailableUsersByGroupId(group.id)
+      .then((res) => setUsers(res.data.users))
       .catch((error) => console.log(error));
   }, []);
 

@@ -20,4 +20,13 @@ const getAllByGroupId = (groupId) => {
   });
 };
 
-export { create, getAllByGroupId };
+const getAvailableUsersByGroupId = (groupId) => {
+  return axios.get(`${BASE_URL}/users/${groupId}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+    },
+  });
+};
+
+export { create, getAllByGroupId, getAvailableUsersByGroupId };
