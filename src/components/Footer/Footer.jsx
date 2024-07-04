@@ -1,4 +1,4 @@
-import wwcLogo from '../../assets/wwc-logo.png';
+import wwcLogo from 'src/assets/wwc-logo.png';
 
 const Footer = () => {
   return (

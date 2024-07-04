@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import Button from '../../components/Button/Button';
-import Card from '../../components/Card/Card';
-import * as groupsService from '../../services/GroupService';
+import Button from 'src/components/Button/Button';
+import Card from 'src/components/Card/Card';
+import * as groupsService from 'src/services/GroupService';
 import { useNavigate } from 'react-router-dom';
 import CreateModal from './components/CreateModal/CreateModal';
-import DeleteModal from '../../components/DeleteGroupModal/DeleteModal';
+import DeleteModal from 'src/components/DeleteGroupModal/DeleteModal';
 
 const GroupsPage = () => {
   const navigate = useNavigate();

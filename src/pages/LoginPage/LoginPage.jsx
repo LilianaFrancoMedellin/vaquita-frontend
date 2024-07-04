@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import Button from '../../components/Button/Button';
-import TextInput from '../../components/TextInput/TextInput';
-import loginLogo from '../../assets/login-logo.svg';
-import * as loginService from '../../services/LoginService';
+import Button from 'src/components/Button/Button';
+import TextInput from 'src/components/TextInput/TextInput';
+import loginLogo from 'src/assets/login-logo.svg';
+import * as loginService from 'src/services/LoginService';
 import schema from './Validations';
 
 const LoginPage = () => {

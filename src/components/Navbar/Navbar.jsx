@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import logo from '../../assets/logo.svg';
+import logo from 'src/assets/logo.svg';
 import DropdownMenu from './components/DropdownMenu/DropdownMenu';
 import NavbarLink from './components/NavbarLink/NavbarLink';
 
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from 'src/hooks/useAuth';
 
 const Navbar = () => {
   const { isAuthenticated } = useAuth();

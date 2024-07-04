@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import userFilledLogo from '../../../../assets/user-filled.svg';
-import { useEscapeKey } from '../../../../hooks/useEscapeKey';
+import userFilledLogo from 'src/assets/user-filled.svg';
+import { useEscapeKey } from 'src/hooks/useEscapeKey';
 
 const DropdownMenu = () => {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import * as groupsService from '../../services/GroupService';
-import Modal from '../Modal/Modal';
-import Button from '../Button/Button';
+import * as groupsService from 'src/services/GroupService';
+import Modal from 'src/components/Modal/Modal';
+import Button from 'src/components/Button/Button';
 
 const DeleteModal = ({ group, isOpen, setIsOpen, onSuccess }) => {
   const [isLoading, setIsLoading] = useState(false);

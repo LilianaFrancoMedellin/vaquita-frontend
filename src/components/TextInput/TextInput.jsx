@@ -1,6 +1,6 @@
-import userIcon from '../../assets/user.svg';
-import passwordIcon from '../../assets/password.svg';
-import peopleIcon from '../../assets/people.svg';
+import userIcon from 'src/assets/user.svg';
+import passwordIcon from 'src/assets/password.svg';
+import peopleIcon from 'src/assets/people.svg';
 import PropTypes from 'prop-types';
 
 const availableIcons = {

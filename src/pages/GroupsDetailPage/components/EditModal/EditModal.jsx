@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import * as groupsService from '../../../../services/GroupService';
-import Modal from '../../../../components/Modal/Modal';
-import TextInput from '../../../../components/TextInput/TextInput';
-import ColorPicker from '../../../../components/ColorPicker/ColorPicker';
-import Button from '../../../../components/Button/Button';
+import * as groupsService from 'src/services/GroupService';
+import Modal from 'src/components/Modal/Modal';
+import TextInput from 'src/components/TextInput/TextInput';
+import ColorPicker from 'src/components/ColorPicker/ColorPicker';
+import Button from 'src/components/Button/Button';
 import schema from './Validations';
 
 const EditModal = ({ group, isModalOpen, setIsModalOpen, onSuccess }) => {

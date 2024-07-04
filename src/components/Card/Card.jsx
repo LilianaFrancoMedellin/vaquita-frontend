@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import logo from '../../assets/logo.svg';
+import logo from 'src/assets/logo.svg';
 
 const Card = ({ hideLogo = false, color, className, children }) => {
   return (

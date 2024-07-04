@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import Button from '../Button/Button';
-import { useEscapeKey } from '../../hooks/useEscapeKey';
+import Button from 'src/components/Button/Button';
+import { useEscapeKey } from 'src/hooks/useEscapeKey';
 
 const Modal = ({ isOpen, setIsOpen, children, title }) => {
   useEscapeKey({

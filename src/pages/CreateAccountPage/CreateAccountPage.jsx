@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '../../components/Button/Button';
-import TextInput from '../../components/TextInput/TextInput';
-import loginLogo from '../../assets/login-logo.svg';
-import * as userService from '../../services/UserService';
+import Button from 'src/components/Button/Button';
+import TextInput from 'src/components/TextInput/TextInput';
+import loginLogo from 'src/assets/login-logo.svg';
+import * as userService from 'src/services/UserService';
 import schema from './Validations';
 
 const CreateAccountPage = () => {

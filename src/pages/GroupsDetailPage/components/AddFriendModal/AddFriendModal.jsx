@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import * as userGroupService from '../../../../services/UserGroupService';
-import Modal from '../../../../components/Modal/Modal';
-import Button from '../../../../components/Button/Button';
+import * as userGroupService from 'src/services/UserGroupService';
+import Modal from 'src/components/Modal/Modal';
+import Button from 'src/components/Button/Button';
 import schema from './Validations';
 
 const AddFriendModal = ({ group, isModalOpen, setIsModalOpen, onSuccess }) => {

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import Button from '../../components/Button/Button';
-import Card from '../../components/Card/Card';
-import * as groupsService from '../../services/GroupService';
+import Button from 'src/components/Button/Button';
+import Card from 'src/components/Card/Card';
+import * as groupsService from 'src/services/GroupService';
 import EditModal from './components/EditModal/EditModal';
 import AddFriendModal from './components/AddFriendModal/AddFriendModal';
-import DeleteModal from '../../components/DeleteGroupModal/DeleteModal';
+import DeleteModal from 'src/components/DeleteGroupModal/DeleteModal';
 
 const expenses = [
   {
