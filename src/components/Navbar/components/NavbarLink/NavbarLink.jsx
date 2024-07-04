@@ -4,13 +4,15 @@ import PropTypes from 'prop-types';
 
 const NavbarLink = ({ pathname, path, text }) => {
   return (
-    <Link
-      className="lg:outline-none lg:hover:underline lg:focus:underline lg:active:underline relative flex justify-center"
-      to={path}
-    >
-      {text}
+    <div className="relative flex justify-center">
+      <Link
+        className="lg:outline-none lg:hover:underline lg:focus:underline lg:active:underline flex justify-center"
+        to={path}
+      >
+        {text}
+      </Link>
       <TriangleUp visible={pathname.includes(path)} />
-    </Link>
+    </div>
   );
 };
 

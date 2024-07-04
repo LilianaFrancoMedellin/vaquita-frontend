@@ -59,7 +59,7 @@ const AddFriendModal = ({ group, isModalOpen, setIsModalOpen, onSuccess }) => {
       <form onSubmit={onCreate}>
         <div className="flex flex-col gap-4 justify-center">
           <p>Select at least one friend to continue</p>
-          <div className="overflow-scroll h-60">
+          <div className="overflow-scroll max-h-60">
             {users.map((user, index) => (
               <div key={index} className="border-b-2 p-2 flex gap-8">
                 <input
