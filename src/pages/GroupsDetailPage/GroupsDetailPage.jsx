@@ -5,7 +5,7 @@ import Card from 'src/components/Card/Card';
 import * as groupsService from 'src/services/GroupService';
 import EditModal from './components/EditModal/EditModal';
 import AddFriendModal from './components/AddFriendModal/AddFriendModal';
-import DeleteModal from 'src/components/DeleteGroupModal/DeleteModal';
+import DeleteModal from 'src/pages/GroupsDetailPage/components/DeleteModal/DeleteModal';
 
 const expenses = [
   {
@@ -39,14 +39,22 @@ const GroupsDetailPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenAddFriend, setIsModalOpenAddFriend] = useState(false);
   const [isModalOpenDelete, setIsModalOpenDelete] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
   const navigate = useNavigate();
   const params = useParams();
 
   const fetchGroup = () => {
     groupsService
       .getById(params.id)
-      .then((res) => setGroup(res.data.group))
-      .catch((error) => console.log(error));
+      .then((res) => {
+        setGroup(res.data.group);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -57,9 +65,19 @@ const GroupsDetailPage = () => {
     fetchGroup();
   }, [params]);
 
+  if (!group && !isLoading) {
+    return (
+      <h2 className="text-center text-vaki-secondary text-2xl mt-8">
+        Looks like the group you are looking for does not exists
+      </h2>
+    );
+  }
+
   if (!group) {
     return null;
   }
+
+  const imTheOwner = group.owneruserid === group.userid;
 
   return (
     <>
@@ -67,7 +85,7 @@ const GroupsDetailPage = () => {
         <div className="flex flex-col xs:flex-row xs:justify-end my-4 gap-2 sm:gap-4">
           <Button text="New Expense" action={() => console.log('click on new expense')} />
           <Button text="New Friend" action={() => setIsModalOpenAddFriend(true)} />
-          <Button text="Edit Group" action={() => setIsModalOpen(true)} />
+          {imTheOwner && <Button text="Edit Group" action={() => setIsModalOpen(true)} />}
         </div>
         <div>
           <Card className="border-0 shadow-none w-full sm:w-1/2 xl:w-1/3" color={group.color}>
@@ -79,9 +97,11 @@ const GroupsDetailPage = () => {
               <span>Participants: </span>{' '}
               <span className="text-vaki-red">{group.participants}</span>
             </span>
-            <div className="flex gap-4">
-              <Button text="Delete" action={() => setIsModalOpenDelete(true)} size="sm" />
-            </div>
+            {imTheOwner && (
+              <div className="flex gap-4">
+                <Button text="Delete" action={() => setIsModalOpenDelete(true)} size="sm" />
+              </div>
+            )}
           </Card>
         </div>
         <div className="mx-2">

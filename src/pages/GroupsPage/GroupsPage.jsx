@@ -4,7 +4,7 @@ import Card from 'src/components/Card/Card';
 import * as groupsService from 'src/services/GroupService';
 import { useNavigate } from 'react-router-dom';
 import CreateModal from './components/CreateModal/CreateModal';
-import DeleteModal from 'src/components/DeleteGroupModal/DeleteModal';
+import LeaveModal from './components/LeaveModal/LeaveModal';
 
 const GroupsPage = () => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const GroupsPage = () => {
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isModalOpenDelete, setIsModalOpenDelete] = useState(false);
+  const [isModalOpenLeave, setIsModalOpenLeave] = useState(false);
 
   const fetchGroups = () => {
     groupsService
@@ -55,14 +55,16 @@ const GroupsPage = () => {
               </span>
               <div className="flex gap-4">
                 <Button text="View" action={() => navigate(`/groups/${group.id}`)} size="sm" />
-                <Button
-                  text="Delete"
-                  action={() => {
-                    setIsModalOpenDelete(true);
-                    setSelectedGroup(group);
-                  }}
-                  size="sm"
-                />
+                {group.owneruserid !== group.userid && (
+                  <Button
+                    text="Leave"
+                    action={() => {
+                      setIsModalOpenLeave(true);
+                      setSelectedGroup(group);
+                    }}
+                    size="sm"
+                  />
+                )}
               </div>
             </Card>
           ))}
@@ -75,12 +77,12 @@ const GroupsPage = () => {
           setIsModalOpen={setIsModalOpen}
         />
       )}
-      {isModalOpenDelete && (
-        <DeleteModal
+      {isModalOpenLeave && (
+        <LeaveModal
           group={selectedGroup}
           onSuccess={fetchGroups}
-          isOpen={isModalOpenDelete}
-          setIsOpen={setIsModalOpenDelete}
+          isOpen={isModalOpenLeave}
+          setIsOpen={setIsModalOpenLeave}
         />
       )}
     </>

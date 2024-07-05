@@ -29,4 +29,13 @@ const getAvailableUsersByGroupId = (groupId) => {
   });
 };
 
-export { create, getAllByGroupId, getAvailableUsersByGroupId };
+const leaveGroup = (id) => {
+  return axios.delete(`${BASE_URL}/${id}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${sessionStorage.getItem('token')}`,
+    },
+  });
+};
+
+export { create, getAllByGroupId, getAvailableUsersByGroupId, leaveGroup };
