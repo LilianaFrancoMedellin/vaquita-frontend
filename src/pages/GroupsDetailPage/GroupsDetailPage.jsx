@@ -66,11 +66,7 @@ const GroupsDetailPage = () => {
   }, [params]);
 
   if (!group && !isLoading) {
-    return (
-      <h2 className="text-center text-vaki-secondary text-2xl mt-8">
-        Looks like the group you are looking for does not exists
-      </h2>
-    );
+    return <Message text="Looks like the group you are looking for does not exists" />;
   }
 
   if (!group) {
@@ -134,16 +130,16 @@ const GroupsDetailPage = () => {
         <EditModal
           group={group}
           onSuccess={fetchGroup}
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
+          isOpen={isModalOpen}
+          setIsOpen={setIsModalOpen}
         />
       )}
       {isModalOpenAddFriend && (
         <AddFriendModal
           group={group}
           onSuccess={fetchGroup}
-          isModalOpen={isModalOpenAddFriend}
-          setIsModalOpen={setIsModalOpenAddFriend}
+          isOpen={isModalOpenAddFriend}
+          setIsOpen={setIsModalOpenAddFriend}
         />
       )}
       {isModalOpenDelete && (

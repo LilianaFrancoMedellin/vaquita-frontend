@@ -7,7 +7,7 @@ import ColorPicker from 'src/components/ColorPicker/ColorPicker';
 import Button from 'src/components/Button/Button';
 import schema from './Validations';
 
-const EditModal = ({ group, isModalOpen, setIsModalOpen, onSuccess }) => {
+const EditModal = ({ group, isOpen, setIsOpen, onSuccess }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [name, setName] = useState(group.name);
@@ -37,7 +37,7 @@ const EditModal = ({ group, isModalOpen, setIsModalOpen, onSuccess }) => {
     groupsService
       .edit(value)
       .then(() => {
-        setIsModalOpen(false);
+        setIsOpen(false);
         onSuccess();
       })
       .catch((error) => {
@@ -47,7 +47,7 @@ const EditModal = ({ group, isModalOpen, setIsModalOpen, onSuccess }) => {
   };
 
   return (
-    <Modal title="Edit Group" isOpen={isModalOpen} setIsOpen={setIsModalOpen}>
+    <Modal title="Edit Group" isOpen={isOpen} setIsOpen={setIsOpen}>
       <form onSubmit={onCreate}>
         <div className="flex flex-col gap-4 justify-center">
           <TextInput
@@ -70,9 +70,9 @@ const EditModal = ({ group, isModalOpen, setIsModalOpen, onSuccess }) => {
 
 EditModal.propTypes = {
   group: PropTypes.any,
-  setIsModalOpen: PropTypes.func,
+  setIsOpen: PropTypes.func,
   onSuccess: PropTypes.func,
-  isModalOpen: PropTypes.bool,
+  isOpen: PropTypes.bool,
 };
 
 export default EditModal;

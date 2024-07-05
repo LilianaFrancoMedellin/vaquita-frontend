@@ -5,7 +5,7 @@ import Modal from 'src/components/Modal/Modal';
 import Button from 'src/components/Button/Button';
 import schema from './Validations';
 
-const AddFriendModal = ({ group, isModalOpen, setIsModalOpen, onSuccess }) => {
+const AddFriendModal = ({ group, isOpen, setIsOpen, onSuccess }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [users, setUsers] = useState([]);
@@ -41,7 +41,7 @@ const AddFriendModal = ({ group, isModalOpen, setIsModalOpen, onSuccess }) => {
     userGroupService
       .create(value)
       .then(() => {
-        setIsModalOpen(false);
+        setIsOpen(false);
         onSuccess();
       })
       .catch((error) => {
@@ -51,11 +51,7 @@ const AddFriendModal = ({ group, isModalOpen, setIsModalOpen, onSuccess }) => {
   };
 
   return (
-    <Modal
-      title={`Add friend - Group ${group.name}`}
-      isOpen={isModalOpen}
-      setIsOpen={setIsModalOpen}
-    >
+    <Modal title={`Add friend - Group ${group.name}`} isOpen={isOpen} setIsOpen={setIsOpen}>
       <form onSubmit={onCreate}>
         <div className="flex flex-col gap-4 justify-center">
           <p>Select at least one friend to continue</p>
@@ -103,9 +99,9 @@ const AddFriendModal = ({ group, isModalOpen, setIsModalOpen, onSuccess }) => {
 
 AddFriendModal.propTypes = {
   group: PropTypes.any,
-  setIsModalOpen: PropTypes.func,
+  setIsOpen: PropTypes.func,
   onSuccess: PropTypes.func,
-  isModalOpen: PropTypes.bool,
+  isOpen: PropTypes.bool,
 };
 
 export default AddFriendModal;

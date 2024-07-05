@@ -5,6 +5,7 @@ import * as groupsService from 'src/services/GroupService';
 import { useNavigate } from 'react-router-dom';
 import CreateModal from './components/CreateModal/CreateModal';
 import LeaveModal from './components/LeaveModal/LeaveModal';
+import Message from 'src/components/Message/Message';
 
 const GroupsPage = () => {
   const navigate = useNavigate();
@@ -39,9 +40,7 @@ const GroupsPage = () => {
         </div>
         <div className="flex gap-2 flex-wrap md:flex-none justify-center">
           {!groups.length && !isLoading && (
-            <h2 className="text-center text-vaki-secondary text-2xl mt-8">
-              Looks like there are not groups associated with you
-            </h2>
+            <Message text="Looks like there are not groups associated with you" />
           )}
           {groups.map((group, index) => (
             <Card

@@ -10,7 +10,7 @@ const Card = ({ hideLogo = false, color, className, children }) => {
     >
       {!hideLogo && (
         <div
-          style={{ backgroundColor: color }}
+          style={{ backgroundColor: color ?? 'transparent' }}
           className="flex items-center justify-between px-6 rounded"
         >
           <img src={logo} alt="Card logo" />
