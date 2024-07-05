@@ -39,7 +39,9 @@ const CreateAccountPage = () => {
     userService
       .create(value)
       .then((response) => {
-        navigate(`/login?email=${response.data.email}`, { replace: true });
+        sessionStorage.setItem('token', response.data.token);
+        window.dispatchEvent(new Event('storage'));
+        navigate('/', { replace: true });
       })
       .catch((error) => {
         setIsLoading(false);

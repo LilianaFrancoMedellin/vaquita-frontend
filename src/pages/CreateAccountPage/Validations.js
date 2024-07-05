@@ -10,7 +10,7 @@ const schema = Joi.object({
     .max(50)
     .required(),
 
-  password: Joi.string().trim().min(1).max(30).required(),
+  password: Joi.string().trim().min(5).max(30).required(),
 });
 
 export default schema;

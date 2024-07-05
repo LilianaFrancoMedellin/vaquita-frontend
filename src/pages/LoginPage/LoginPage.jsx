@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import Button from 'src/components/Button/Button';
 import TextInput from 'src/components/TextInput/TextInput';
 import loginLogo from 'src/assets/login-logo.svg';
@@ -8,22 +8,11 @@ import schema from './Validations';
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const location = useLocation();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    if (location.search) {
-      const params = new URLSearchParams(location.search);
-      const emailFromUrl = params.get('email');
-      if (emailFromUrl) {
-        setEmail(emailFromUrl);
-      }
-    }
-  }, [location]);
 
   const onLogin = (e) => {
     e.preventDefault();
